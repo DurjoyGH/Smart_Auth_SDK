@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { TokenManager } from '../managers/token-manager';
 import { MemoryStorage } from '../storage/memory-storage';
 import { resolveConfig, noopLogger } from '@smart-auth/shared';
