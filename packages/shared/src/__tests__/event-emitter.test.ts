@@ -75,7 +75,9 @@ describe('TypedEventEmitter', () => {
 
   it('should not break when a handler throws', () => {
     const emitter = new TypedEventEmitter();
-    const errorHandler = vi.fn(() => { throw new Error('Handler error'); });
+    const errorHandler = vi.fn(() => {
+      throw new Error('Handler error');
+    });
     const goodHandler = vi.fn();
 
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});

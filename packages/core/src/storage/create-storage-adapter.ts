@@ -21,7 +21,7 @@ export function createStorageAdapter(config: AuthConfig): StorageAdapter {
     case 'custom':
       throw new Error(
         '[smart-auth] Storage type "custom" requires a StorageAdapter to be provided ' +
-        'via the storage option. Pass a StorageAdapter instance instead of "custom".'
+          'via the storage option. Pass a StorageAdapter instance instead of "custom".',
       );
     default:
       return new MemoryStorage();

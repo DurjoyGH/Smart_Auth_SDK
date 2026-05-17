@@ -76,6 +76,7 @@ When a user logs out in one tab, all other tabs are notified:
 4. Tabs B, C, D automatically clear their auth state
 
 This also works for:
+
 - Login events
 - Token refresh events
 
@@ -83,12 +84,12 @@ This also works for:
 
 ### Token Storage
 
-| Storage | Access Token | Refresh Token | Notes |
-|---------|-------------|---------------|-------|
-| Memory | ✅ Recommended | ❌ Never | Cleared on refresh |
-| httpOnly Cookie | ✅ Good | ✅ Recommended | Server-set only |
-| localStorage | ⚠️ Acceptable | ❌ Never | XSS vulnerable |
-| sessionStorage | ⚠️ Acceptable | ❌ Never | Tab-scoped |
+| Storage         | Access Token   | Refresh Token  | Notes              |
+| --------------- | -------------- | -------------- | ------------------ |
+| Memory          | ✅ Recommended | ❌ Never       | Cleared on refresh |
+| httpOnly Cookie | ✅ Good        | ✅ Recommended | Server-set only    |
+| localStorage    | ⚠️ Acceptable  | ❌ Never       | XSS vulnerable     |
+| sessionStorage  | ⚠️ Acceptable  | ❌ Never       | Tab-scoped         |
 
 ### Recommendations
 

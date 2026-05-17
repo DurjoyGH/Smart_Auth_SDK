@@ -71,7 +71,10 @@ describe('TokenManager', () => {
   });
 
   it('should extract roles from token', async () => {
-    const token = createTestJwt({ roles: ['admin', 'user'], exp: Math.floor(Date.now() / 1000) + 3600 });
+    const token = createTestJwt({
+      roles: ['admin', 'user'],
+      exp: Math.floor(Date.now() / 1000) + 3600,
+    });
     await tokenManager.setAccessToken(token);
     const roles = await tokenManager.getRoles();
     expect(roles).toEqual(['admin', 'user']);

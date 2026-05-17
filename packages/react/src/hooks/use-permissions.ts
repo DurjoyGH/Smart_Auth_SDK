@@ -46,12 +46,8 @@ export function usePermissions(): UsePermissionsResult {
     }
 
     const user = state.user as Record<string, unknown>;
-    const roles = Array.isArray(user['roles'])
-      ? (user['roles'] as string[])
-      : [];
-    const permissions = Array.isArray(user['permissions'])
-      ? (user['permissions'] as string[])
-      : [];
+    const roles = Array.isArray(user['roles']) ? (user['roles'] as string[]) : [];
+    const permissions = Array.isArray(user['permissions']) ? (user['permissions'] as string[]) : [];
 
     return { roles, permissions };
   }, [state.user]);

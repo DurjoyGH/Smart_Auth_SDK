@@ -105,10 +105,7 @@ export function setTokenCookies(
  * });
  * ```
  */
-export function clearTokenCookies(
-  res: Response,
-  options: CookieOptions = {},
-): void {
+export function clearTokenCookies(res: Response, options: CookieOptions = {}): void {
   const {
     path = '/',
     domain,

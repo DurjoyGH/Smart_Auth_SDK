@@ -41,15 +41,29 @@ const issuer = createTokenIssuer({
 // ─── Fake User Database ───────────────────────────────────────────────────────
 
 const USERS = [
-  { id: '1', email: 'admin@example.com', password: 'admin123', name: 'Admin User', roles: ['admin', 'user'], permissions: ['users:read', 'users:write', 'posts:read', 'posts:write'] },
-  { id: '2', email: 'user@example.com', password: 'user123', name: 'Regular User', roles: ['user'], permissions: ['posts:read'] },
+  {
+    id: '1',
+    email: 'admin@example.com',
+    password: 'admin123',
+    name: 'Admin User',
+    roles: ['admin', 'user'],
+    permissions: ['users:read', 'users:write', 'posts:read', 'posts:write'],
+  },
+  {
+    id: '2',
+    email: 'user@example.com',
+    password: 'user123',
+    name: 'Regular User',
+    roles: ['user'],
+    permissions: ['posts:read'],
+  },
 ];
 
 // ─── Auth Routes ──────────────────────────────────────────────────────────────
 
 app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body;
-  const user = USERS.find(u => u.email === email && u.password === password);
+  const user = USERS.find((u) => u.email === email && u.password === password);
 
   if (!user) {
     res.status(401).json({ error: 'Invalid credentials' });
@@ -77,7 +91,7 @@ const refreshHandler = createRefreshHandler({
   issuer,
   tokenLocation: 'body',
   loadUser: async (userId) => {
-    const user = USERS.find(u => u.id === userId);
+    const user = USERS.find((u) => u.id === userId);
     if (!user) return { sub: userId };
     return { email: user.email, name: user.name, roles: user.roles, permissions: user.permissions };
   },

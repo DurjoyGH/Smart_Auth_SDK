@@ -5,9 +5,7 @@ import type { AuthConfig, AuthConfigOptions } from '@smart-auth/types';
  * with all defaults applied.
  */
 export function resolveConfig(options: AuthConfigOptions = {}): AuthConfig {
-  const isProduction =
-    typeof process !== 'undefined' &&
-    process.env?.['NODE_ENV'] === 'production';
+  const isProduction = typeof process !== 'undefined' && process.env?.['NODE_ENV'] === 'production';
 
   return {
     apiBaseUrl: options.apiBaseUrl ?? '',

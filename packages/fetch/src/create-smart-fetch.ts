@@ -117,11 +117,7 @@ export function createSmartFetch(config: SmartFetchConfig): SmartFetchFunction {
     });
 
     // Handle refresh-triggering status codes
-    if (
-      !isRetry &&
-      !isExcluded(url) &&
-      refreshStatusCodes.includes(response.status)
-    ) {
+    if (!isRetry && !isExcluded(url) && refreshStatusCodes.includes(response.status)) {
       try {
         await auth.refreshToken();
 
@@ -136,6 +132,5 @@ export function createSmartFetch(config: SmartFetchConfig): SmartFetchFunction {
     return response;
   }
 
-  return (input: string | URL | Request, init?: RequestInit) =>
-    smartFetch(input, init, false);
+  return (input: string | URL | Request, init?: RequestInit) => smartFetch(input, init, false);
 }

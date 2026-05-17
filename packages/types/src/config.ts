@@ -180,8 +180,12 @@ export interface AuthConfigOptions {
  * Resolved configuration with all defaults applied.
  * This is what the core engine works with internally.
  */
-export interface AuthConfig extends Required<Omit<AuthConfigOptions, 'refresh' | 'cookie' | 'extractUser' | 'loginUrl' | 'postLoginUrl'>> {
-  refresh: Required<Omit<RefreshConfig, 'extractTokens'>> & { extractTokens?: RefreshConfig['extractTokens'] };
+export interface AuthConfig extends Required<
+  Omit<AuthConfigOptions, 'refresh' | 'cookie' | 'extractUser' | 'loginUrl' | 'postLoginUrl'>
+> {
+  refresh: Required<Omit<RefreshConfig, 'extractTokens'>> & {
+    extractTokens?: RefreshConfig['extractTokens'];
+  };
   cookie: Required<CookieConfig>;
   extractUser?: AuthConfigOptions['extractUser'];
   loginUrl?: string;

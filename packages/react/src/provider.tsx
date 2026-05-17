@@ -1,5 +1,11 @@
 import { useState, useEffect, useCallback, useMemo, useRef, type ReactNode } from 'react';
-import type { AuthConfigOptions, AuthState, AuthEngine, TokenPair, StorageAdapter } from '@smart-auth/types';
+import type {
+  AuthConfigOptions,
+  AuthState,
+  AuthEngine,
+  TokenPair,
+  StorageAdapter,
+} from '@smart-auth/types';
 import { createAuth } from '@smart-auth/core';
 import { AuthContext } from './context';
 import type { AuthContextValue } from './context';
@@ -143,9 +149,5 @@ export function AuthProvider({
     return <>{loadingFallback}</>;
   }
 
-  return (
-    <AuthContext.Provider value={contextValue}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 }

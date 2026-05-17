@@ -73,13 +73,9 @@ export function authorize(
     // Check permissions
     if (requiredPermissions.length > 0) {
       if (mode === 'all') {
-        permissionsSatisfied = requiredPermissions.every((perm) =>
-          userPermissions.includes(perm),
-        );
+        permissionsSatisfied = requiredPermissions.every((perm) => userPermissions.includes(perm));
       } else {
-        permissionsSatisfied = requiredPermissions.some((perm) =>
-          userPermissions.includes(perm),
-        );
+        permissionsSatisfied = requiredPermissions.some((perm) => userPermissions.includes(perm));
       }
     }
 
@@ -92,9 +88,10 @@ export function authorize(
 
     let authorized: boolean;
     if (hasRoleRequirements && hasPermissionRequirements) {
-      authorized = mode === 'all'
-        ? rolesSatisfied && permissionsSatisfied
-        : rolesSatisfied || permissionsSatisfied;
+      authorized =
+        mode === 'all'
+          ? rolesSatisfied && permissionsSatisfied
+          : rolesSatisfied || permissionsSatisfied;
     } else if (hasRoleRequirements) {
       authorized = rolesSatisfied;
     } else if (hasPermissionRequirements) {
@@ -105,10 +102,7 @@ export function authorize(
     }
 
     if (!authorized) {
-      const error = new UnauthorizedError(
-        message ?? 'Insufficient permissions',
-        403,
-      );
+      const error = new UnauthorizedError(message ?? 'Insufficient permissions', 403);
       res.status(403).json(error.toJSON());
       return;
     }

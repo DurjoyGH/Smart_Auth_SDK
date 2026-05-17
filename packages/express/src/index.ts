@@ -22,8 +22,4 @@ export { setTokenCookies, clearTokenCookies } from './cookie-helpers';
 export type { CookieOptions } from './cookie-helpers';
 
 // ─── Re-exports for convenience ──────────────────────────────────────────────
-export type {
-  ExpressAuthConfig,
-  TokenIssuerConfig,
-  AuthenticatedRequest,
-} from '@smart-auth/types';
+export type { ExpressAuthConfig, TokenIssuerConfig, AuthenticatedRequest } from '@smart-auth/types';

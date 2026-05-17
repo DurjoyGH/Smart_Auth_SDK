@@ -118,7 +118,15 @@ export class TokenManager {
     }
 
     // Default extraction: use the entire payload minus standard JWT fields
-    const { iat: _iat, exp: _exp, nbf: _nbf, iss: _iss, aud: _aud, jti: _jti, ...userData } = payload;
+    const {
+      iat: _iat,
+      exp: _exp,
+      nbf: _nbf,
+      iss: _iss,
+      aud: _aud,
+      jti: _jti,
+      ...userData
+    } = payload;
     if (payload.sub) {
       (userData as Record<string, unknown>).id = payload.sub;
     }

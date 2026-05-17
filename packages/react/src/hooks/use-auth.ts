@@ -28,7 +28,7 @@ export function useAuth<T = Record<string, unknown>>(): AuthContextValue<T> {
   if (!context) {
     throw new Error(
       '[smart-auth] useAuth() must be used within an <AuthProvider>. ' +
-      'Make sure your component tree is wrapped with <AuthProvider>.',
+        'Make sure your component tree is wrapped with <AuthProvider>.',
     );
   }
 

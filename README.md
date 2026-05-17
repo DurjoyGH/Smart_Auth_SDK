@@ -42,30 +42,30 @@ Authentication is never "just a JWT". Every real-world app ends up writing the s
 
 ## ✨ Features
 
-| Feature | Description |
-|---------|-------------|
-| 🔐 **JWT Lifecycle** | Automatic token management, expiration detection, proactive refresh |
-| 🔄 **Silent Refresh** | Concurrent-safe token refresh with request queuing — only one refresh call, ever |
-| 📱 **Multi-Tab Sync** | BroadcastChannel + storage event fallback — logout in one tab, logout everywhere |
-| ⚛️ **React Integration** | Provider, hooks (`useAuth`, `useUser`, `usePermissions`), route guards |
-| 🛡️ **Express Middleware** | JWT verification, RBAC authorization, token issuance, refresh rotation |
-| 🌐 **HTTP Interceptors** | Axios and fetch wrappers with automatic token attachment and 401 retry |
-| 💾 **Storage Adapters** | Memory (default), localStorage, sessionStorage, cookies, or custom |
-| 🔒 **Security-First** | httpOnly cookies, token rotation, clock skew handling, sensitive data masking |
-| 📦 **Modular** | Install only what you need — tree-shakeable, zero cross-package bloat |
-| 🧩 **TypeScript** | Full type safety with generic user types and strict interfaces |
+| Feature                   | Description                                                                      |
+| ------------------------- | -------------------------------------------------------------------------------- |
+| 🔐 **JWT Lifecycle**      | Automatic token management, expiration detection, proactive refresh              |
+| 🔄 **Silent Refresh**     | Concurrent-safe token refresh with request queuing — only one refresh call, ever |
+| 📱 **Multi-Tab Sync**     | BroadcastChannel + storage event fallback — logout in one tab, logout everywhere |
+| ⚛️ **React Integration**  | Provider, hooks (`useAuth`, `useUser`, `usePermissions`), route guards           |
+| 🛡️ **Express Middleware** | JWT verification, RBAC authorization, token issuance, refresh rotation           |
+| 🌐 **HTTP Interceptors**  | Axios and fetch wrappers with automatic token attachment and 401 retry           |
+| 💾 **Storage Adapters**   | Memory (default), localStorage, sessionStorage, cookies, or custom               |
+| 🔒 **Security-First**     | httpOnly cookies, token rotation, clock skew handling, sensitive data masking    |
+| 📦 **Modular**            | Install only what you need — tree-shakeable, zero cross-package bloat            |
+| 🧩 **TypeScript**         | Full type safety with generic user types and strict interfaces                   |
 
 ## 📦 Packages
 
-| Package | Description | Size |
-|---------|-------------|:----:|
-| [`@smart-auth/core`](./packages/core) | Auth engine, token manager, storage adapters, multi-tab sync | ![core size](https://img.shields.io/bundlephobia/minzip/@smart-auth/core?style=flat-square&label=) |
-| [`@smart-auth/react`](./packages/react) | React Provider, hooks, `ProtectedRoute`, `GuestRoute` | ![react size](https://img.shields.io/bundlephobia/minzip/@smart-auth/react?style=flat-square&label=) |
-| [`@smart-auth/axios`](./packages/axios) | Axios interceptors with concurrent refresh queue | ![axios size](https://img.shields.io/bundlephobia/minzip/@smart-auth/axios?style=flat-square&label=) |
-| [`@smart-auth/fetch`](./packages/fetch) | Enhanced fetch wrapper with auto-refresh | ![fetch size](https://img.shields.io/bundlephobia/minzip/@smart-auth/fetch?style=flat-square&label=) |
-| [`@smart-auth/express`](./packages/express) | Express middleware — JWT verify, RBAC, token issuance | ![express size](https://img.shields.io/bundlephobia/minzip/@smart-auth/express?style=flat-square&label=) |
-| [`@smart-auth/types`](./packages/types) | Shared TypeScript interfaces and error classes | Types only |
-| [`@smart-auth/shared`](./packages/shared) | Internal utilities — JWT decode, event emitter, logger | Internal |
+| Package                                     | Description                                                  |                                                   Size                                                   |
+| ------------------------------------------- | ------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------: |
+| [`@smart-auth/core`](./packages/core)       | Auth engine, token manager, storage adapters, multi-tab sync |    ![core size](https://img.shields.io/bundlephobia/minzip/@smart-auth/core?style=flat-square&label=)    |
+| [`@smart-auth/react`](./packages/react)     | React Provider, hooks, `ProtectedRoute`, `GuestRoute`        |   ![react size](https://img.shields.io/bundlephobia/minzip/@smart-auth/react?style=flat-square&label=)   |
+| [`@smart-auth/axios`](./packages/axios)     | Axios interceptors with concurrent refresh queue             |   ![axios size](https://img.shields.io/bundlephobia/minzip/@smart-auth/axios?style=flat-square&label=)   |
+| [`@smart-auth/fetch`](./packages/fetch)     | Enhanced fetch wrapper with auto-refresh                     |   ![fetch size](https://img.shields.io/bundlephobia/minzip/@smart-auth/fetch?style=flat-square&label=)   |
+| [`@smart-auth/express`](./packages/express) | Express middleware — JWT verify, RBAC, token issuance        | ![express size](https://img.shields.io/bundlephobia/minzip/@smart-auth/express?style=flat-square&label=) |
+| [`@smart-auth/types`](./packages/types)     | Shared TypeScript interfaces and error classes               |                                                Types only                                                |
+| [`@smart-auth/shared`](./packages/shared)   | Internal utilities — JWT decode, event emitter, logger       |                                                 Internal                                                 |
 
 ## 🚀 Quick Start
 
@@ -93,17 +93,22 @@ import { AuthProvider, useAuth, ProtectedRoute } from '@smart-auth/react';
 
 function App() {
   return (
-    <AuthProvider config={{
-      apiBaseUrl: '/api',
-      refresh: { endpoint: '/auth/refresh' },
-      autoRefresh: true,
-    }}>
+    <AuthProvider
+      config={{
+        apiBaseUrl: '/api',
+        refresh: { endpoint: '/auth/refresh' },
+        autoRefresh: true,
+      }}
+    >
       <Router>
-        <Route path="/dashboard" element={
-          <ProtectedRoute fallback={<Navigate to="/login" />}>
-            <Dashboard />
-          </ProtectedRoute>
-        } />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute fallback={<Navigate to="/login" />}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Router>
     </AuthProvider>
   );
@@ -156,20 +161,22 @@ app.post('/auth/login', async (req, res) => {
 });
 
 // Protect any route with one middleware
-app.get('/api/profile',
+app.get(
+  '/api/profile',
   verifyAccessToken({ secret: process.env.JWT_ACCESS_SECRET! }),
   (req, res) => {
     res.json({ userId: (req as any).auth.userId });
-  }
+  },
 );
 
 // Role-based access control
-app.delete('/api/users/:id',
+app.delete(
+  '/api/users/:id',
   verifyAccessToken({ secret: process.env.JWT_ACCESS_SECRET! }),
   authorize(['admin']),
   (req, res) => {
     // Only admins reach here
-  }
+  },
 );
 
 // Refresh token rotation
@@ -246,15 +253,15 @@ const data = await response.json();
 
 ## 🔒 Security
 
-| Practice | Implementation |
-|----------|---------------|
+| Practice                      | Implementation                                                |
+| ----------------------------- | ------------------------------------------------------------- |
 | **Default to memory storage** | Access tokens are stored in-memory by default (XSS-resistant) |
-| **httpOnly cookies** | Refresh tokens should use httpOnly cookies set by the server |
-| **Token rotation** | Old refresh tokens are invalidated on each refresh |
-| **Clock skew tolerance** | Configurable buffer prevents premature token rejection |
-| **Data masking** | Sensitive data (tokens, secrets) is masked in all log output |
-| **CSRF protection** | SameSite cookie attribute, configurable per environment |
-| **Concurrent refresh safety** | Only one refresh request fires, all others queue and await |
+| **httpOnly cookies**          | Refresh tokens should use httpOnly cookies set by the server  |
+| **Token rotation**            | Old refresh tokens are invalidated on each refresh            |
+| **Clock skew tolerance**      | Configurable buffer prevents premature token rejection        |
+| **Data masking**              | Sensitive data (tokens, secrets) is masked in all log output  |
+| **CSRF protection**           | SameSite cookie attribute, configurable per environment       |
+| **Concurrent refresh safety** | Only one refresh request fires, all others queue and await    |
 
 ## 🧪 Testing
 

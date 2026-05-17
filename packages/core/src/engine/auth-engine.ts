@@ -39,12 +39,7 @@ export class AuthEngineImpl<T = Record<string, unknown>> implements AuthEngine<T
 
   private destroyed = false;
 
-  constructor(
-    config: AuthConfig,
-    storage: StorageAdapter,
-    logger: Logger,
-    fetchFn?: typeof fetch,
-  ) {
+  constructor(config: AuthConfig, storage: StorageAdapter, logger: Logger, fetchFn?: typeof fetch) {
     this.config = config;
     this.logger = logger;
     this.emitter = new TypedEventEmitter();
@@ -123,7 +118,9 @@ export class AuthEngineImpl<T = Record<string, unknown>> implements AuthEngine<T
     });
   }
 
-  async logout(reason: 'manual' | 'sessionExpired' | 'refreshFailed' | 'tabSync' = 'manual'): Promise<void> {
+  async logout(
+    reason: 'manual' | 'sessionExpired' | 'refreshFailed' | 'tabSync' = 'manual',
+  ): Promise<void> {
     this.logger.info(`Logout initiated (reason: ${reason})`);
 
     // Clear refresh timer

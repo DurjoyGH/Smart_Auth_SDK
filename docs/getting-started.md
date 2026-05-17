@@ -45,10 +45,7 @@ const authConfig = {
 
 function App() {
   return (
-    <AuthProvider
-      config={authConfig}
-      loadingFallback={<FullPageSpinner />}
-    >
+    <AuthProvider config={authConfig} loadingFallback={<FullPageSpinner />}>
       <Router />
     </AuthProvider>
   );
@@ -94,25 +91,34 @@ function Router() {
   return (
     <Routes>
       {/* Only visible when NOT logged in */}
-      <Route path="/login" element={
-        <GuestRoute redirectTo="/dashboard">
-          <LoginPage />
-        </GuestRoute>
-      } />
+      <Route
+        path="/login"
+        element={
+          <GuestRoute redirectTo="/dashboard">
+            <LoginPage />
+          </GuestRoute>
+        }
+      />
 
       {/* Only visible when logged in */}
-      <Route path="/dashboard" element={
-        <ProtectedRoute redirectTo="/login" loadingFallback={<Spinner />}>
-          <Dashboard />
-        </ProtectedRoute>
-      } />
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute redirectTo="/login" loadingFallback={<Spinner />}>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Admin only */}
-      <Route path="/admin" element={
-        <ProtectedRoute roles={['admin']} redirectTo="/unauthorized">
-          <AdminPanel />
-        </ProtectedRoute>
-      } />
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute roles={['admin']} redirectTo="/unauthorized">
+            <AdminPanel />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }
@@ -223,14 +229,11 @@ const authMiddleware = verifyAccessToken({
 app.use('/api', authMiddleware);
 
 // Admin-only route
-app.delete('/api/users/:id',
-  authorize(['admin']),
-  async (req, res) => {
-    // req.auth.userId, req.auth.roles available
-    await db.users.delete(req.params.id);
-    res.json({ deleted: true });
-  }
-);
+app.delete('/api/users/:id', authorize(['admin']), async (req, res) => {
+  // req.auth.userId, req.auth.roles available
+  await db.users.delete(req.params.id);
+  res.json({ deleted: true });
+});
 ```
 
 ## Axios Setup
@@ -262,6 +265,7 @@ const { data } = await api.get('/protected');
 ## SSR Considerations
 
 The SDK is SSR-safe by default:
+
 - All browser APIs (`window`, `document`, `localStorage`) are safely guarded
 - The memory storage adapter works everywhere
 - React hooks handle server rendering gracefully

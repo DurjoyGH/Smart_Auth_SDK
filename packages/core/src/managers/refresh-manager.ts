@@ -160,7 +160,7 @@ export class RefreshManager {
     if (!this.fetchFn) {
       throw new RefreshFailedError(
         'No fetch function available. Ensure you are running in an environment ' +
-        'with fetch support or provide a custom fetch function.',
+          'with fetch support or provide a custom fetch function.',
       );
     }
 
@@ -173,13 +173,9 @@ export class RefreshManager {
 
     if (!response.ok) {
       if (response.status === 401 || response.status === 403) {
-        throw new SessionExpiredError(
-          'Refresh token has been revoked or expired',
-        );
+        throw new SessionExpiredError('Refresh token has been revoked or expired');
       }
-      throw new RefreshFailedError(
-        `Refresh request failed with status ${response.status}`,
-      );
+      throw new RefreshFailedError(`Refresh request failed with status ${response.status}`);
     }
 
     const data = await response.json();
@@ -198,20 +194,13 @@ export class RefreshManager {
 
     // Default extraction: look for common field names
     const accessToken =
-      data[this.config.accessTokenKey] ??
-      data.accessToken ??
-      data.access_token ??
-      data.token;
+      data[this.config.accessTokenKey] ?? data.accessToken ?? data.access_token ?? data.token;
 
     const newRefreshToken =
-      data[this.config.refreshTokenKey] ??
-      data.refreshToken ??
-      data.refresh_token;
+      data[this.config.refreshTokenKey] ?? data.refreshToken ?? data.refresh_token;
 
     if (!accessToken || typeof accessToken !== 'string') {
-      throw new RefreshFailedError(
-        'Could not extract access token from refresh response',
-      );
+      throw new RefreshFailedError('Could not extract access token from refresh response');
     }
 
     return {

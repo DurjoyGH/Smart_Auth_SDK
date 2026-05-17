@@ -15,10 +15,7 @@ export class TypedEventEmitter {
    * Subscribe to an event.
    * @returns An unsubscribe function.
    */
-  on<K extends AuthEventType>(
-    event: K,
-    handler: EventHandler<AuthEventMap[K]>,
-  ): () => void {
+  on<K extends AuthEventType>(event: K, handler: EventHandler<AuthEventMap[K]>): () => void {
     if (!this.listeners.has(event)) {
       this.listeners.set(event, new Set());
     }
@@ -39,10 +36,7 @@ export class TypedEventEmitter {
    * Subscribe to an event, but only trigger once.
    * @returns An unsubscribe function (can cancel before it fires).
    */
-  once<K extends AuthEventType>(
-    event: K,
-    handler: EventHandler<AuthEventMap[K]>,
-  ): () => void {
+  once<K extends AuthEventType>(event: K, handler: EventHandler<AuthEventMap[K]>): () => void {
     const unsubscribe = this.on(event, ((payload: AuthEventMap[K]) => {
       unsubscribe();
       handler(payload);
