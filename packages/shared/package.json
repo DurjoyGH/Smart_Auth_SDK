@@ -6,7 +6,7 @@
   "author": "smart-auth-sdk contributors",
   "repository": {
     "type": "git",
-    "url": "https://github.com/smart-auth/smart-auth-sdk.git",
+    "url": "https://github.com/DurjoyGH/Smart_Auth_SDK.git",
     "directory": "packages/shared"
   },
   "main": "./dist/index.js",
