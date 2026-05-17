@@ -1,9 +1,9 @@
 {
   "name": "@smart-auth/types",
-  "version": "0.1.0",
-  "description": "TypeScript type definitions for smart-auth-sdk",
+  "version": "0.1.1",
+  "description": "TypeScript interfaces, error classes, and type definitions for the Smart Auth SDK authentication ecosystem",
   "license": "MIT",
-  "author": "smart-auth-sdk contributors",
+  "author": "Durjoy Ghosh",
   "repository": {
     "type": "git",
     "url": "https://github.com/DurjoyGH/Smart_Auth_SDK.git",
@@ -41,5 +41,16 @@
     "tsup": "^8.0.0",
     "typescript": "^5.4.0",
     "vitest": "^1.3.0"
-  }
+  },
+  "keywords": [
+    "auth",
+    "authentication",
+    "jwt",
+    "typescript",
+    "types",
+    "smart-auth",
+    "token",
+    "session"
+  ],
+  "homepage": "https://github.com/DurjoyGH/Smart_Auth_SDK/tree/main/packages/types#readme"
 }

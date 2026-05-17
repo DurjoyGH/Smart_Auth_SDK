@@ -1,9 +1,9 @@
 {
   "name": "@smart-auth/axios",
-  "version": "0.1.0",
-  "description": "Axios integration for smart-auth-sdk",
+  "version": "0.1.1",
+  "description": "Axios integration for Smart Auth SDK — automatic token injection, 401 interceptors, and silent refresh with request queuing",
   "license": "MIT",
-  "author": "smart-auth-sdk contributors",
+  "author": "Durjoy Ghosh",
   "repository": {
     "type": "git",
     "url": "https://github.com/DurjoyGH/Smart_Auth_SDK.git",
@@ -50,5 +50,16 @@
     "tsup": "^8.0.0",
     "typescript": "^5.4.0",
     "vitest": "^1.3.0"
-  }
+  },
+  "keywords": [
+    "auth",
+    "axios",
+    "interceptor",
+    "jwt",
+    "token-refresh",
+    "smart-auth",
+    "retry-queue",
+    "authentication"
+  ],
+  "homepage": "https://github.com/DurjoyGH/Smart_Auth_SDK/tree/main/packages/axios#readme"
 }

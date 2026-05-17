@@ -1,9 +1,9 @@
 {
   "name": "@smart-auth/react",
-  "version": "0.1.0",
-  "description": "React integration for smart-auth-sdk",
+  "version": "0.1.1",
+  "description": "React integration for Smart Auth SDK — AuthProvider, useAuth hook, protected routes, and role-based UI guards",
   "license": "MIT",
-  "author": "smart-auth-sdk contributors",
+  "author": "Durjoy Ghosh",
   "repository": {
     "type": "git",
     "url": "https://github.com/DurjoyGH/Smart_Auth_SDK.git",
@@ -61,5 +61,17 @@
     "@testing-library/react": "^14.2.0",
     "@testing-library/jest-dom": "^6.4.0",
     "jsdom": "^24.0.0"
-  }
+  },
+  "keywords": [
+    "auth",
+    "react",
+    "hooks",
+    "authentication",
+    "jwt",
+    "protected-routes",
+    "smart-auth",
+    "useAuth",
+    "context"
+  ],
+  "homepage": "https://github.com/DurjoyGH/Smart_Auth_SDK/tree/main/packages/react#readme"
 }
