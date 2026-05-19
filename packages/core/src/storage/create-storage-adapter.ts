@@ -25,10 +25,12 @@ export function createStorageAdapter(config: AuthConfig): StorageAdapter {
         '[smart-auth] Storage type "custom" requires a StorageAdapter to be provided ' +
           'via the storage option. Pass a StorageAdapter instance instead of "custom".',
       );
-    default:
+    default: {
+      const _exhaustive: never = config.storage;
       throw new Error(
-        `[smart-auth] Invalid storage type "${config.storage}". ` +
+        `[smart-auth] Invalid storage type "${_exhaustive as string}". ` +
           `Valid options: "memory", "local", "localStorage", "session", "sessionStorage", "cookie", "custom".`,
       );
+    }
   }
 }
