@@ -2,12 +2,19 @@
  * Storage backend type for token persistence.
  *
  * - `memory`: In-memory only (cleared on page refresh). Most secure for access tokens.
- * - `localStorage`: Persistent across tabs/sessions. NOT recommended for sensitive tokens.
- * - `sessionStorage`: Cleared when the tab closes.
+ * - `localStorage` (or `local`): Persistent across tabs/sessions. NOT recommended for sensitive tokens.
+ * - `sessionStorage` (or `session`): Cleared when the tab closes.
  * - `cookie`: Uses document.cookie (client-side) or Set-Cookie headers (server-side).
  * - `custom`: User-provided StorageAdapter implementation.
  */
-export type StorageType = 'memory' | 'localStorage' | 'sessionStorage' | 'cookie' | 'custom';
+export type StorageType =
+  | 'memory'
+  | 'local'
+  | 'localStorage'
+  | 'session'
+  | 'sessionStorage'
+  | 'cookie'
+  | 'custom';
 
 /**
  * How tokens are sent to the server.

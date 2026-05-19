@@ -18,6 +18,7 @@ Thumbs.db
 
 # Testing
 coverage/
+Blog-Web/
 
 # Environment
 .env
