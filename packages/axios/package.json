@@ -1,6 +1,6 @@
 {
   "name": "@smart-auth/axios",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Axios integration for Smart Auth SDK — automatic token injection, 401 interceptors, and silent refresh with request queuing",
   "license": "MIT",
   "author": "Durjoy Ghosh",

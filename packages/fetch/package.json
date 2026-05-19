@@ -1,6 +1,6 @@
 {
   "name": "@smart-auth/fetch",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Fetch API wrapper for Smart Auth SDK — automatic token injection, 401 handling, and silent refresh with retry",
   "license": "MIT",
   "author": "Durjoy Ghosh",

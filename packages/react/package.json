@@ -1,6 +1,6 @@
 {
   "name": "@smart-auth/react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React integration for Smart Auth SDK — AuthProvider, useAuth hook, protected routes, and role-based UI guards",
   "license": "MIT",
   "author": "Durjoy Ghosh",

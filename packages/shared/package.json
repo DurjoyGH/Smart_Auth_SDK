@@ -1,6 +1,6 @@
 {
   "name": "@smart-auth/shared",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Shared utilities for Smart Auth SDK — JWT decoding, event emitter, environment detection, and logging",
   "license": "MIT",
   "author": "Durjoy Ghosh",

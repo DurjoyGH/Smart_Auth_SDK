@@ -1,6 +1,6 @@
 {
   "name": "@smart-auth/express",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Express middleware for Smart Auth SDK — JWT verification, role-based access control, token issuance, and refresh rotation",
   "license": "MIT",
   "author": "Durjoy Ghosh",

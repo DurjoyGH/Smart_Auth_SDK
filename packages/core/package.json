@@ -1,6 +1,6 @@
 {
   "name": "@smart-auth/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Core authentication engine for Smart Auth SDK — token management, silent refresh, multi-tab sync, and secure storage",
   "license": "MIT",
   "author": "Durjoy Ghosh",

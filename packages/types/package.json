@@ -1,6 +1,6 @@
 {
   "name": "@smart-auth/types",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "TypeScript interfaces, error classes, and type definitions for the Smart Auth SDK authentication ecosystem",
   "license": "MIT",
   "author": "Durjoy Ghosh",
